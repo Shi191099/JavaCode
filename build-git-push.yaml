@@ -3,8 +3,8 @@ version: 0.2
 phases:
   build:
     commands:
-      - git config --global user.email "shital191099@gmail.com"
-      - git config --global user.name "Shi191099"
+#       - git config --global user.email "shital191099@gmail.com"
+#       - git config --global user.name "Shi191099"
       - git config --list
       
       - git config --system credential.https://git-codecommit.us-east-1.amazonaws.com.helper '!aws --profile default github credential-helper $@'
