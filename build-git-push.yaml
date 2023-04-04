@@ -11,6 +11,8 @@ phases:
       - git config credential.UseHttpPath true
       - cd ChattingApp
       - mkdir shital
+      - ls
+      - touch shi
       - # make changes to files
       - git add .
       - git commit -m "commit message"
