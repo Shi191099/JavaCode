@@ -43,6 +43,8 @@ phases:
     commands:
       - echo "Setting up Git credentials..."
       - git config --global credential.helper '!f() { echo "username=${GIT_AUTHOR_NAME}"; echo "password=${GITHUB_TOKEN}"; }; f'
+      - git config --global user.email ${GIT_AUTHOR_EMAIL}
+      - git config --global user.name ${GIT_AUTHOR_NAME}"
       - echo "Pushing code to GitHub repository..."
    #   - git remote set-url origin https://github.com/Shi191099/ChattingApp.git
       - git remote set-url origin git@github.com:Shi191099/ChattingApp.git
