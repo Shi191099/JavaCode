@@ -3,7 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
-      - git clone https://github.com/username/repo.git
+      - git clone https://github.com/Shi191099/ChattingApp.git
       - cd repo
       - # make changes to files
       - git add .
