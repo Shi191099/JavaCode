@@ -19,8 +19,9 @@ phases:
       - touch shi
       - # make changes to files
       - git add .
+      - git config --list
       - git commit -m "commit message"
       
-      - git config --list
+      
       - git push origin main
       - # other build commands
