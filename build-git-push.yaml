@@ -3,14 +3,15 @@ version: 0.2
 phases:
   build:
     commands:
-      - git config --global user.email "shital191099@gmail.com"
-      - git config --global user.name "Shi191099"
+#       - git config --global user.email "shital191099@gmail.com"
+#       - git config --global user.name "Shi191099"
       - git clone https://github.com/Shi191099/ChattingApp.git
+      - git config credential.helper '!aws codebuild credential-helper $@'
+      - git config credential.UseHttpPath true
       - cd ChattingApp
       - # make changes to files
       - git add .
       - git commit -m "commit message"
-      - git config credential.helper '!aws codebuild credential-helper $@'
-      - git config credential.UseHttpPath true
-      - git push origin master
+
+      - git push origin main
       - # other build commands
