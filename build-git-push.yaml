@@ -11,7 +11,7 @@ phases:
       - git config --system credential.https://git-codecommit.us-east-1.amazonaws.com.UseHttpPath true
       - git remote set-url origin https://github.com/Shi191099/ChattingApp.git
       
-      - git clone https://github.com/Shi191099/ChattingApp.git
+#      - git clone https://github.com/Shi191099/ChattingApp.git
 #       - git config credential.helper '!aws codebuild credential-helper $@'
 #       - git config credential.UseHttpPath true
       - cd ChattingApp
