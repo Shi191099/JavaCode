@@ -6,9 +6,13 @@ phases:
       - git config --global user.email "shital191099@gmail.com"
       - git config --global user.name "Shi191099"
       - git config --list
+      
+      - git config --system credential.https://git-codecommit.us-east-1.amazonaws.com.helper '!aws --profile default github credential-helper $@'
+      - git config --system credential.https://git-codecommit.us-east-1.amazonaws.com.UseHttpPath true
+      
       - git clone https://github.com/Shi191099/ChattingApp.git
-      - git config credential.helper '!aws codebuild credential-helper $@'
-      - git config credential.UseHttpPath true
+#       - git config credential.helper '!aws codebuild credential-helper $@'
+#       - git config credential.UseHttpPath true
       - cd ChattingApp
       - mkdir shital
       - ls
