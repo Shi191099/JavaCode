@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - git clone https://github.com/username/repo.git
+      - cd repo
+      - # make changes to files
+      - git add .
+      - git commit -m "commit message"
+      - git config credential.helper '!aws codebuild credential-helper $@'
+      - git config credential.UseHttpPath true
+      - git push origin master
+      - # other build commands
