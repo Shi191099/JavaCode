@@ -23,5 +23,6 @@ phases:
       - git commit -m "commit message"
       
       
-      - git push origin main
+#       - git push origin main
+      - git push --set-upstream origin main
       - # other build commands
