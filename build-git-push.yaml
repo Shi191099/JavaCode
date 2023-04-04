@@ -10,6 +10,7 @@ phases:
       - git config credential.helper '!aws codebuild credential-helper $@'
       - git config credential.UseHttpPath true
       - cd ChattingApp
+      - mkdir shital
       - # make changes to files
       - git add .
       - git commit -m "commit message"
