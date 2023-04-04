@@ -14,7 +14,7 @@ phases:
 #      - git clone https://github.com/Shi191099/ChattingApp.git
 #       - git config credential.helper '!aws codebuild credential-helper $@'
 #       - git config credential.UseHttpPath true
-      - cd ChattingApp
+#      - cd ChattingApp
       - mkdir shital
       - ls
       - touch shi
