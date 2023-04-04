@@ -1,29 +1,48 @@
+# version: 0.2
+
+# phases:
+#   build:
+#     commands:
+#       - git config --global user.email "shital191099@gmail.com"
+#       - git config --global user.name "Shi191099"
+#       - git config --list
+      
+#       - git config --system credential.https://git-codecommit.us-east-1.amazonaws.com.helper '!aws --profile default github credential-helper $@'
+#       - git config --system credential.https://git-codecommit.us-east-1.amazonaws.com.UseHttpPath true
+#       - git remote set-url origin https://github.com/Shi191099/ChattingApp.git
+      
+# #      - git clone https://github.com/Shi191099/ChattingApp.git
+# #       - git config credential.helper '!aws codebuild credential-helper $@'
+# #       - git config credential.UseHttpPath true
+# #      - cd ChattingApp
+#       - mkdir shital
+#       - ls
+#       - touch shi
+#       - # make changes to files
+#       - git add .
+#       - git config --list
+#       - git commit -m "commit message"
+      
+      
+# #       - git push origin main
+#       - git push --set-upstream origin main
+#       - # other build commands
+
+
 version: 0.2
+
+env:
+  GITHUB_TOKEN: "{{resolve:secrets-manager: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:SecretString:token}}"
+  GIT_AUTHOR_NAME: "Shi191099"
+  GIT_AUTHOR_EMAIL: "shital191099@gmail.com"
+  GIT_COMMITTER_NAME: "Shi191099"
+  GIT_COMMITTER_EMAIL: "shital191099@gmail.com"
 
 phases:
   build:
     commands:
-      - git config --global user.email "shital191099@gmail.com"
-      - git config --global user.name "Shi191099"
-      - git config --list
-      
-      - git config --system credential.https://git-codecommit.us-east-1.amazonaws.com.helper '!aws --profile default github credential-helper $@'
-      - git config --system credential.https://git-codecommit.us-east-1.amazonaws.com.UseHttpPath true
-      - git remote set-url origin https://github.com/Shi191099/ChattingApp.git
-      
-#      - git clone https://github.com/Shi191099/ChattingApp.git
-#       - git config credential.helper '!aws codebuild credential-helper $@'
-#       - git config credential.UseHttpPath true
-#      - cd ChattingApp
-      - mkdir shital
-      - ls
-      - touch shi
-      - # make changes to files
-      - git add .
-      - git config --list
-      - git commit -m "commit message"
-      
-      
-#       - git push origin main
-      - git push --set-upstream origin main
-      - # other build commands
+      - echo "Setting up Git credentials..."
+      - git config --global credential.helper '!f() { echo "username=${GIT_AUTHOR_NAME}"; echo "password=${GITHUB_TOKEN}"; }; f'
+      - echo "Pushing code to GitHub repository..."
+      - git remote add origin https://github.com/Shi191099/ChattingApp.git
+      - git push origin HEAD:refs/heads/main
