@@ -1,0 +1,35 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk11
+    commands:
+      - echo "Install phase: Installing dependencies..."
+      - mvn install -DskipTests=true
+      
+  pre_build:
+    commands:
+      - echo "Pre-build phase: Setting up web driver..."
+      # Download and configure web driver (e.g., ChromeDriver)
+      # Replace the following command with the appropriate web driver setup for your project
+      - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+      - sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+      - sudo apt-get update -y && sudo apt-get install -y google-chrome-stable
+      - wget https://chromedriver.storage.googleapis.com/LATEST_RELEASE -O version
+      - wget https://chromedriver.storage.googleapis.com/$(cat version)/chromedriver_linux64.zip
+      - unzip chromedriver_linux64.zip
+      - sudo mv chromedriver /usr/local/bin/chromedriver
+      - sudo chown root:root /usr/local/bin/chromedriver
+      - sudo chmod +x /usr/local/bin/chromedriver
+      - export CHROME_BIN=google-chrome-stable
+      
+  build:
+    commands:
+      - echo "Build phase: Compiling and packaging..."
+      - mvn package -DskipTests=true
+      
+  post_build:
+    commands:
+      - echo "Post-build phase: Running Selenium tests..."
+      - mvn test
