@@ -5,7 +5,7 @@ phases:
     runtime-versions:
       java: openjdk11
     commands:
-      - echo "Install phase: Installing dependencies..."
+      - echo "Install phase Installing dependencies..."
       - mvn install -DskipTests=true
       
   pre_build:
@@ -26,10 +26,10 @@ phases:
       
   build:
     commands:
-      - echo "Build phase: Compiling and packaging..."
+      - echo "Build phase Compiling and packaging..."
       - mvn package -DskipTests=true
       
   post_build:
     commands:
-      - echo "Post-build phase: Running Selenium tests..."
+      - echo "Post-build phase Running Selenium tests..."
       - mvn test
