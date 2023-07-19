@@ -33,3 +33,7 @@ phases:
     commands:
       - echo "Post-build phase Running Selenium tests..."
       - mvn test
+artifacts:
+  files:
+    - "**/*.war"
+  discard-paths: yes
