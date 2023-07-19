@@ -10,7 +10,7 @@ phases:
       
   pre_build:
     commands:
-      - echo "Pre-build phase: Setting up web driver..."
+      - echo "Pre-build phase Setting up web driver..."
       # Download and configure web driver (e.g., ChromeDriver)
       # Replace the following command with the appropriate web driver setup for your project
       - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
